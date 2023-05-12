@@ -1,0 +1,810 @@
+@font-face {
+  font-family: 'Dewi';
+  src: url(/font/RFDewiExpanded-Semibold.ttf);
+}
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+
+*{
+    margin: 0 auto;
+    padding: 0;
+    width: 100%;
+}
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+/*Убираем линии обводки некоторых браузеров*/
+:focus,
+:active {
+  outline: none;
+}
+
+a:focus,
+a:active {
+  outline: none;
+}
+
+
+input::-ms-clear {
+  display: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+a,
+a:visited {
+  text-decoration: none;
+  color: black;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+// div{
+//   display: inherit;
+// }
+
+// code starts here!
+$grey-main: #7A7A7A;
+$light-grey-main: #C1C1C1;
+$black-main: #444444;
+$white-main: #FFFFFF;
+$bg: white;
+
+
+%header-style{
+  font-family: "Dewi";
+  color: $black-main;
+  font-size: 2.2vw;
+}
+%header-style-1{
+  font-family: "Dewi";
+  color: $black-main;
+  font-size: 2.2vw;
+  width: 15vw;
+  margin-top: 6vw;
+  margin-left: 4vw;
+}
+
+%annotation-style{
+  font-family: 'Montserrat';
+  font-size: 1vw;
+}
+%footer-mini{
+  font-family: 'Montserrat';
+  font-weight: 100;
+  font-size: 1vw;
+  line-height: 2vw;
+}
+%item-style{
+  font-family: "Dewi";
+  font-size: 1.2vw;
+  line-height: 2vw;
+}
+
+body{
+  background-color: $bg;
+}
+
+.header{
+  display: block;
+  .upper-block{
+    nav{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      line-height: 2vw;
+    }
+  }
+  .link-1{
+    &__item:first-child{
+      margin-right: 5%;
+      width: 20vw;
+    }
+    &__item:last-child{
+      margin-left: 5%;
+      width: 20vw;
+    }
+    &__item{
+      text-align: center;
+      width: 15vw;
+      color: $grey-main;
+      font-family:'Montserrat';
+      font-size: 0.75vw;
+    }
+  }
+  .long-lines{
+    margin-left: 0;
+    width: 100%;
+    border-bottom: 1px solid $light-grey-main;
+  }
+  .lower-block{
+    nav{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      line-height: 5vw;
+      img{
+        width: 0.75vw;
+      }
+      .link-2{
+        &__item:first-child{
+          display: inline;
+        }
+        &__item:nth-child(4){
+          width: 60%;
+          margin-left: 10vw;
+          img{
+            vertical-align: middle;
+            height: 2vw;
+            width: auto;
+          }
+        }
+        &__item{
+          text-align: center;
+          width: 15vw;
+          color: $black-main;
+          font-family:'Montserrat';
+          font-size: 0.75vw;
+          font-weight: bold;
+        }
+      }
+
+    }
+  }
+}
+
+
+.main-window{
+  .adaptive-block{
+    display: none;
+  }
+  display: grid;
+  grid-template-columns: 25fr 50fr 15fr;
+  grid-template-rows: 35fr 40fr 10fr;
+  grid-template-areas:
+            "image header field"
+            "image annotation field"
+            "image empty catalogue";
+  &__image{
+    grid-area: image;
+    img{
+      height: 100%;
+      width: 100%;
+    }
+  }
+  &__header-1{
+    margin-top: 6vw;
+    margin-right: 4vw;
+    width: 75%;
+    grid-area: header;
+    @extend %header-style;
+  }
+  &__annotation{
+grid-area: annotation;
+    width: 60%;
+    margin-top: 2vw;
+    margin-right: 4vw;
+  }
+  &__empty{
+    grid-area: empty;
+    background-color: $black-main;
+  }
+  &__catalogue{
+    background-color: $black-main;
+grid-area: catalogue;
+  }
+}
+
+.catalogue{
+  display: flex;
+  align-items: center;
+  &__text{
+    width: auto;
+    margin: 0;
+    color: $white-main;
+    @extend %item-style;
+  }
+  &__text-1{
+    width: auto;
+    margin: 0;
+    color: $white-main;
+    @extend %item-style;
+  }
+  &__arrow{
+    padding-left: 0;
+    margin-left: 0;
+    width: 5vw;
+    height: 1vw;
+    img{
+      width:1vw
+    }    
+  }
+  &__itm-text{
+    margin-right: 0;
+    margin-left: 4vw;
+    @extend %item-style;
+    color: $black-main;
+    width: 13vw;
+  }
+}
+.annotation{
+  @extend %annotation-style;
+}
+
+
+
+
+.categories-window{
+  display: grid;
+  grid-template-columns: 15fr 15fr 15fr;
+  grid-template-rows: 3fr 2fr;
+  grid-template-areas:
+            "ctg ruch dv"
+            "prof yasch all";
+
+
+.item{
+  margin: auto;
+  &__text{
+    margin-top: 3vw;
+    margin-left: 4vw;
+    @extend %item-style;
+    color: $black-main;
+    width: 18vw;
+  }
+
+  &__img{
+    margin-top: 3vw;
+    width: 20vw;
+        img{
+      width: 20vw;
+      height: auto;
+      }
+    }
+  }
+
+}
+.item-2{
+  margin: auto;
+  
+  &__text{
+    margin-top: 3vw;
+    margin-left: 4vw;
+    @extend %item-style;
+    color: $black-main;
+    width: 18vw;
+  }
+
+
+  &__img{
+    width: 12vw;
+        img{
+      width: auto;
+      height: 7vw;
+      }
+    }
+
+  &__wrap{
+    margin-top: 10vw;
+  }
+  }
+
+.header-2{
+  @extend %header-style-1;
+}
+
+.window-2{
+  display: grid;
+  background-color: $black-main;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 1.7fr 4fr 0.5fr 0.5fr;
+  &__item-2{
+    grid-row-start: 2;
+    grid-row-end: 3;
+  }
+  &__item-3{
+    grid-row-start: 2;
+    grid-row-end: 3;
+    grid-column-start: 2;
+    grid-column-end: 3;
+  }
+  &__item-4{
+    background-color: $white-main;
+    grid-row-start: 3;
+    grid-row-end: 4;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    width: 20vw;
+    margin-right: 0;
+  }
+}
+.w2-item{
+  &__main-text{
+    @extend %item-style;
+    color: $white-main;
+    margin-top: 5vw;
+    margin-left: 4vw;
+    width: 30vw;
+  }
+  &__photo{
+    height: 100%;
+    width: 100%;
+  }
+  &__text{
+    @extend %annotation-style;
+    color: $white-main;
+    margin-top: 4vw;
+    margin-left: 4vw;
+    width: 20vw;
+  }
+  &__wrapper{
+    margin-top: 1vw;
+    width: 17vw;
+
+  }
+}
+.black{
+  color: $black-main;
+}
+
+.window-3{
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas: 
+                    "brand tr sa st rj"
+                    "brand cn oz cat cat";
+  &__partners{
+    grid-area: brand;
+    @extend %header-style-1;
+  }
+  &__image{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 15vw;
+    img{
+      margin: 0 auto;
+      scale: 0.8;
+    }
+  }
+  &__wrapper{
+    grid-area: cat;
+    width: 25vw;
+    margin-left: 11vw;
+  }
+}
+
+.small{
+  img{
+    scale: 0.6;
+  }
+}
+
+%contact-style{
+  font-family: "Dewi";
+  color: $white-main;
+  font-size: 1.8vw;
+  margin-top: 6vw;
+}
+%contact-style-ann{
+  font-family: "Dewi";
+  color: $grey-main;
+  font-size: 1.3vw;
+  margin-top: 6vw;
+}
+.contact{
+  background-color: $black-main;
+  display: grid;
+  grid-template-columns: 2fr 1fr 3fr;
+  grid-template-rows: 1fr 2fr;
+  grid-template-areas: 
+  "text cnt cont-1"
+  "text andr cont-2";
+  &__text{
+    grid-area: text;
+    @extend %header-style-1;
+    color: $white-main;
+  }
+  &__a-header{
+
+    grid-area: andr;
+    @extend %contact-style-ann;
+  }
+  &__c-header{
+    grid-area: cnt;
+    @extend %contact-style-ann;
+  }
+  &__cont-1{
+    grid-area: cont-1;
+    @extend %contact-style;
+  }
+  &__cont-2{
+    grid-area: cont-2;
+    @extend %contact-style;
+  }
+}
+
+.footer{
+  padding-top: 5vw;
+  background-color: $black-main;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  width: 80%;
+  &__column{
+    h1{
+      @extend %annotation-style;
+      color: $grey-main;
+      margin-bottom: 1vw;
+    }
+    p{
+      @extend %footer-mini;
+      color: $grey-main;
+    }
+  }
+}
+.last-window{
+  background-color: $black-main;
+}
+
+
+@media (max-width: 769px) {
+  
+  .upper-block{
+    display: none;
+  }
+
+
+
+  // .adaptive-block{
+  //   nav{
+  //     display: flex;
+  //     justify-content: space-between;
+  //     align-items: center;
+  //     line-height: 5vw;
+  //     img{
+  //       width: 2vw;
+  //     }
+  //     .link-3{
+  //       &__item:first-child{
+  //         display: inline;
+  //       }
+  //       &__item:nth-child(2){
+  //         width: 60%;
+  //         img{
+  //           vertical-align: middle;
+  //           height: 3vw;
+  //           width: auto;
+  //         }
+  //       }
+  //       &__item{
+  //         text-align: center;
+  //         width: 15vw;
+  //         color: $black-main;
+  //         font-family:'Montserrat';
+  //         font-size: 3vw;
+  //         font-weight: bold;
+  //       }
+  //     }
+
+  //   }
+  // }
+
+
+  .main-window{
+    display: grid;
+    grid-template-columns: 25fr 20fr;
+    grid-template-rows: 40fr 20fr 4fr;
+    grid-template-areas:
+              "image header"
+              "annotation field"
+              "catalogue catalogue";
+  &__image{
+    grid-area: image;
+    img{
+      height: 100%;
+      width: 100%;
+    }
+  }
+  &__header-1{
+    margin-top: 60vw;
+    margin-right: 4vw;
+    width: 75%;
+    grid-area: header;
+    @extend %header-style;
+    font-size: 3vw;
+  }
+  &__annotation{
+  grid-area: annotation;
+                width: 60%;
+     margin-top: 4vw;
+    margin-left: 6vw;
+    font-size: 2vw;
+  }
+  &__empty{
+    grid-area: empty;
+    background-color: $black-main;
+  }
+  &__catalogue{
+    background-color: $black-main;
+    grid-area: catalogue;
+  }
+  }
+  .catalogue{
+    display: flex;
+    align-items: center;
+    &__text-1{
+      width: 17vw;
+      margin-left:6vw;
+      color: $white-main;
+      @extend %item-style;
+      font-size: 2vw;
+    }
+    &__text{
+      margin-left: 6vw;
+      width: 17vw;
+      margin: 0;
+      color: $white-main;
+      @extend %item-style;
+      font-size: 2vw;
+    }
+    &__arrow{
+      padding-left: 0;
+      margin: 0;
+      width: 5vw;
+      height: 2vw;
+      img{
+        width:2vw
+      }    
+    }
+    &__itm-text{
+      margin-right: 0;
+      margin-left: 0;
+      @extend %item-style;
+      color: $black-main;
+      font-size: 2.5vw;
+      width: 30vw;
+    }
+  }
+.categories-window{
+  display: grid;
+  grid-template-rows: 0.5fr 1fr 1fr 1fr 0.5fr;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+  "g1"
+  "g2"
+  "g3"
+  "g4"
+  "g5";
+&__item-1{
+  grid-area: g1;
+}
+&__item-2{
+  grid-area: g2;
+}
+.item{
+  margin: auto;
+  display: flex;
+  &__text{
+    margin-top: 12vw;
+    margin-left: 4vw;
+    @extend %item-style;
+    color: $black-main;
+    width: 40vw;
+    font-size: 2.5vw;
+    line-height: 4vw;
+  }
+
+  &__img{
+    margin-top: 3vw;
+    width: 20vw;
+        img{
+      width: 20vw;
+      height: auto;
+      }
+    }
+  }
+
+}
+.item-2{
+  margin: auto;
+  display: flex;
+  &__text{
+    margin-top: 3vw;
+    margin-left: 4vw;
+    @extend %item-style;
+    color: $black-main;
+    width: 40vw;
+    font-size: 2.5vw;
+    line-height: 4vw;
+  }
+
+
+  &__img{
+    width: 18vw;
+        img{
+      width: auto;
+      height: 10vw;
+      }
+    }
+
+  &__wrap{
+    margin-top: 5vw;
+    margin-bottom: 5vw;
+    margin-left: 48vw;
+  }
+  }
+  .header-2{
+    margin-left: 48vw;
+    @extend %header-style-1;
+    font-size: 3vw;
+  }
+  .black{
+    color: $black-main;
+  }
+
+
+
+
+  .window-2{
+    display: grid;
+    background-color: $black-main;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: 1.7fr 4fr 0.5fr 4fr;
+    grid-template-areas:
+    "header header"
+    "image image"
+    ". catalogue"
+    "text .";
+    &__item-1{
+      grid-area: header;
+    }
+    &__item-2{
+      grid-area: text;
+    }
+    &__item-3{
+      grid-area: image;
+    }
+    &__item-4{
+      grid-area: catalogue;
+      width: 40vw;
+      margin-right: 0;
+    }
+  }
+  .w2-item{
+    &__main-text{
+      @extend %item-style;
+      color: $white-main;
+      font-size: 3vw;
+      line-height: 4vw;
+      margin-top: 5vw;
+      margin-left: 6vw;
+      width: 60vw;
+    }
+    &__photo{
+      height: 100%;
+      width: 100%;
+    }
+    &__text{
+      @extend %annotation-style;
+      color: $white-main;
+      margin-top: 4vw;
+      margin-left: 6vw;
+      width: 40vw;
+      font-size: 2.5vw;
+    }
+    &__wrapper{
+      margin-top: 1vw;
+      width: 17vw;
+  
+    }
+  }
+  .black{
+    color: $black-main;
+  }
+  
+
+
+
+
+
+  .window-3{
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: 
+                      "brand tr sa st rj"
+                      "brand cn oz cat cat";
+    &__partners{
+      grid-area: brand;
+      @extend %header-style-1;
+      margin-left: 6vw;
+      font-size: 3vw;
+    }
+    &__image{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 15vw;
+      img{
+        margin: 0 auto;
+        scale: 0.8;
+      }
+    }
+    &__wrapper{
+      grid-area: cat;
+      width: 25vw;
+      margin-left: 11vw;
+    }
+  }
+  
+  .small{
+    img{
+      scale: 0.6;
+    }
+  }
+
+  %contact-style{
+    font-family: "Dewi";
+    color: $white-main;
+    font-size: 1.8vw;
+    margin-top: 6vw;
+  }
+  %contact-style-ann{
+    font-family: "Dewi";
+    color: $grey-main;
+    font-size: 1.3vw;
+    margin-top: 6vw;
+  }
+  .contact{
+    background-color: $black-main;
+    display: grid;
+    grid-template-columns: 2fr 1fr 3fr;
+    grid-template-rows: 1fr 2fr;
+    grid-template-areas: 
+    "text cnt cont-1"
+    "text andr cont-2";
+    &__text{
+      grid-area: text;
+      @extend %header-style-1;
+      color: $white-main;
+      margin-left: 6vw;
+      font-size: 3vw;
+    }
+    &__a-header{
+      
+      grid-area: andr;
+      @extend %contact-style-ann;
+      font-size: 2vw;
+    }
+    &__c-header{
+      grid-area: cnt;
+      @extend %contact-style-ann;
+      font-size: 2vw;
+    }
+    &__cont-1{
+      grid-area: cont-1;
+      @extend %contact-style;
+    }
+    &__cont-2{
+      grid-area: cont-2;
+      @extend %contact-style;
+    }
+  }
+
+  .footer{
+    display: none;
+  }
+}
