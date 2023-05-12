@@ -2,7 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 @font-face {
   font-family: "Dewi";
-  src: url(/font/RFDewiExpanded-Semibold.ttf);
+  src: url("/font/RFDewiExpanded-Semibold.ttf");
 }
 * {
   margin: 0 auto;
